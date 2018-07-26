@@ -1,0 +1,21 @@
+{
+  "name": "Dictionary",
+  "version": "1.0.0",
+  "description": "Master Electron course Project",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "devtron": "^1.4.0",
+    "electron": "^2.0.0",
+    "electron-reload": "^1.2.5"
+  },
+  "dependencies": {
+    "bulma": "^0.7.1",
+    "jquery": "^3.3.1",
+    "query-string": "^6.1.0"
+  }
+}
