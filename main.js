@@ -1,9 +1,23 @@
 // Modules to control application life and create native browser window
 const { app, ipcMain } = require('electron')
 const mainWindow = require('./mainWindow')
+const translate = require('google-translate-api');
 
 // Enable Electron-reload
 require('electron-reload')(__dirname);
+
+
+// using translate text here
+translate('I', { to: 'vi' }).then(res => {
+  console.log(res);
+  console.log(res.text);
+  //=> I speak English
+  console.log(res.from.language.iso);
+  //=> nl
+}).catch(err => {
+  console.error(err);
+});
+
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
