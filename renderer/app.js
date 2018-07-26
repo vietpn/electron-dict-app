@@ -15,7 +15,7 @@ $('#translate-btn').click((e) => {
 // Listen for new item from main process
 ipcRenderer.on('translate-success', (e, res) => {
     if (res.res) {
-        console.log(res);
+        window.openTranslate(res);
     }
 });
 

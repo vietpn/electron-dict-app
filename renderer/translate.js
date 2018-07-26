@@ -1,19 +1,11 @@
 
-window.openTranslate = () => {
-
-    // Only if items have been added
-    if (!this.toreadItems.length) return
-
-    // Get selected item
-    let targetItem = $('.read-item.is-active')
-
+window.openTranslate = (res) => {
     // Get item's content url
-    let contentURL = encodeURIComponent(targetItem.data('url'));
+    let resContent = JSON.stringify(res);
 
-    // Get item index to pass to proxy window
-    let itemIndex = targetItem.index() - 1;
+    console.log(res);
 
-    let readerWinUrl = `file://${__dirname}/render.html?url=${contentURL}&itemIndex=${itemIndex}`;
+    let readerWinUrl = `file://${__dirname}/translate.html?res=${resContent}`;
 
     // open item in new proxy window
     let readerWin = window.open(readerWinUrl);
