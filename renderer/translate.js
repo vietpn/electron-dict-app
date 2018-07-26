@@ -1,11 +1,9 @@
 
-window.openTranslate = (res) => {
+window.openTranslate = (url) => {
     // Get item's content url
-    let resContent = JSON.stringify(res);
+    let url = encodeURIComponent(url);
 
-    console.log(res);
-
-    let readerWinUrl = `file://${__dirname}/translate.html?res=${resContent}`;
+    let readerWinUrl = `file://${__dirname}/translate.html?url=${resContent}`;
 
     // open item in new proxy window
     let readerWin = window.open(readerWinUrl);

@@ -8,23 +8,18 @@
     <link rel="stylesheet" href="../bower_components/bulma/css/bulma.css">
     <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="main.css">
-
+    <style>
+        html,
+        body,
+        webview {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
-    <span>En</span>
-    <div>
-        <textarea style="width: 100%; height: 200px;" id="translate-txt"></textarea>
-    </div>
-
-    <span>Vi</span>
-    <div>
-        <textarea style="width: 100%; height: 200px;" id="translate-res"></textarea>
-    </div>
-
-    <div style="text-align: center">
-        <button id="save-btn">Save</button>
-    </div>
+    <webview src="about:blank"></webview>
 
     <script>
         // jQuery
@@ -32,12 +27,12 @@
 
         const queryString = require('query-string');
         const queryParams = queryString.parse(location.search);
+        let url = decodeURIComponent(queryParams.url);
 
-        let res = queryParams.res;
-        let resObj = JSON.parse(res);
-
-        $('#translate-txt').val(resObj.translateTxt);
-        $('#translate-res').val(resObj.res.text);
+        $('webview').one('dom-ready', (e) => {
+            // load item content url into webview
+            e.currentTarget.loadURL(url);
+        })
     </script>
 </body>
 
