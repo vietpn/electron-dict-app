@@ -18,6 +18,7 @@
     "google-translate-api": "^2.3.0",
     "google-translator": "^1.0.1",
     "jquery": "^3.3.1",
-    "query-string": "^6.1.0"
+    "query-string": "^6.1.0",
+    "sync-request": "^6.0.0"
   }
 }

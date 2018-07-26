@@ -7,28 +7,30 @@ const request = require('request');
 // Enable Electron-reload
 require('electron-reload')(__dirname);
 
-var totalWords = [];
 
-// loop get word from array
-for (let i = 0; i <= 2; i++) {
-  request(`http://www.wordcount.org/dbquery.php?toFind=${i}&method=SEARCH_BY_INDEX`, function (error, response, body) {
-    if (body) {
-      var arr = body.split("&");
-      var rePattern = new RegExp(/^word[0-9]+/);
+// get words from www.wordcount.org
+let downloadWords = () => {
+  // loop get word from array
+  for (let i = 0; i <= 2; i++) {
+    request(`http://www.wordcount.org/dbquery.php?toFind=${i}&method=SEARCH_BY_INDEX`, function (error, response, body) {
+      if (body) {
+        var arr = body.split("&");
+        var rePattern = new RegExp(/^word[0-9]+/);
 
-      arr.forEach(element => {
-        if (element.match(rePattern)) {
-          var word = element.split('=');
-          if (word[1]) {
-            console.log(word[1]);
-            totalWords.push(word[1]);
+        arr.forEach(element => {
+          if (element.match(rePattern)) {
+            var word = element.split('=');
+            if (word[1]) {
+              console.log(word[1]);
+            }
           }
-        }
-      });
-    }
-  });
+        });
+      }
+    });
+  }
 }
 
+let words = downloadWords();
 
 ipcMain.on('translate-txt', (e, translateTxt) => {
   // using translate text here
