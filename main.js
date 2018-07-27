@@ -3,6 +3,8 @@
 // const mainWin = require('./mainWin');
 // const translate = require('google-translate-api');
 const request = require('request');
+const fs = require('fs');
+
 
 // Enable Electron-reload
 //require('electron-reload')(__dirname);
@@ -19,7 +21,7 @@ let downloadWords = (i) => {
       arr.forEach(element => {
         if (element.match(rePattern)) {
           let word = element.split('=');
-          if (word[1]) {
+          if (word[1] && !(arrWords.indexOf(word[1]) > -1)) {
             arrWords.push(word[1]);
           }
         }
@@ -28,7 +30,11 @@ let downloadWords = (i) => {
       if (i < 600) {
         downloadWords(i + 301);
       } else {
-        console.log(arrWords.length);
+        arrWords.forEach(word => {
+          fs.appendFile('words.txt', word + "\n", function (err) {
+            if (err) throw err;
+          });
+        });
       }
     }
   });
