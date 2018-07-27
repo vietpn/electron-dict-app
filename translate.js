@@ -24,17 +24,15 @@ module.exports = (translateTxt, callback) => {
     // load read item
     bgItemWin.loadURL(url);
 
+    console.log(url);
+
     // wait for page to finish loading
     bgItemWin.webContents.on('did-finish-load', () => {
-        // Get screenshot (thumbnail)
-        bgItemWin.webContents.capturePage((image) => {
-            // return new item via callback
-            callback({ url });
+        // return new item via callback
+        callback({ url });
 
-            // clean up
-            bgItemWin.close();
-            bgItemWin = null;
-        })
-
+        // clean up
+        bgItemWin.close();
+        bgItemWin = null;
     })
 }

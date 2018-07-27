@@ -22,7 +22,7 @@
     <webview src="about:blank"></webview>
     <script>
         // jQuery
-        $ = require('jquery')
+        $ = require('jquery');
 
         const queryString = require('query-string');
         const queryParams = queryString.parse(location.search);
@@ -33,6 +33,7 @@
             // load item content url into webview
             e.currentTarget.loadURL(url);
         })
+
     </script>
 </body>
 
