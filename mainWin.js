@@ -7,11 +7,8 @@ exports.win;
 // mainWindow createWindow
 exports.createWindow = () => {
     this.win = new BrowserWindow({
-        width: 500,
+        width: 800,
         height: 650,
-        minWidth: 350,
-        maxWidth: 650,
-        minHeight: 310
     })
 
     // Devtools

@@ -24,6 +24,8 @@ module.exports = (translateTxt, callback) => {
     // load read item
     bgItemWin.loadURL(url);
 
+    console.log(url);
+
     // wait for page to finish loading
     bgItemWin.webContents.on('did-finish-load', () => {
         // Get screenshot (thumbnail)
