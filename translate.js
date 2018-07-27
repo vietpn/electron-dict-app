@@ -26,10 +26,13 @@ module.exports = (translateTxt, callback) => {
 
     console.log(url);
 
-    // wait for page to finish loading
-    bgItemWin.webContents.on('did-finish-load', () => {
-        // return new item via callback
+    bgItemWin.webContents.on('dom-ready', () => {
         callback({ url });
+
+        bgItemWin.webContents.executeJavaScript(`function translate() { return document.getElementById("result_box").textContent } translate() `)
+            .then((res) => {
+                console.log(res);
+            })
 
         // clean up
         bgItemWin.close();

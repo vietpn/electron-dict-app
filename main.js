@@ -3,10 +3,8 @@ const { app, ipcMain } = require('electron');
 const mainWin = require('./mainWin');
 const translate = require('./translate');
 
-
 // Enable Electron-reload
 require('electron-reload')(__dirname);
-
 
 ipcMain.on('translate-txt', (e, translateTxt) => {
   // Get word translated
