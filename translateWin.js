@@ -24,7 +24,6 @@ exports.createWindow = (translateTxt, callback) => {
 
     console.log(url);
 
-
     // load read item
     bgItemWin.loadURL(url);
 

@@ -9,7 +9,6 @@ const fs = require('fs');
 require('electron-reload')(__dirname);
 
 ipcMain.on('translate-btn', (e, translateTxt) => {
-  console.log('test');
 
   // read file here
   // let data = fs.readFileSync('words.txt', 'utf8');
