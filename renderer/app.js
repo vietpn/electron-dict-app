@@ -3,7 +3,7 @@ const { ipcRenderer } = require('electron');
 
 window.openTranslate = (item) => {
     // Get item's content url
-    let contentURL = encodeURIComponent(item.url);    
+    let contentURL = encodeURIComponent(item.url);
 
     let readerWinUrl = `file://${__dirname}/translate.html?url=${contentURL}`;
 
@@ -12,20 +12,15 @@ window.openTranslate = (item) => {
 }
 
 $('#translate-btn').click((e) => {
-    let translateTxt = $('#translate-txt').val();
-
-    // Get txt from input
-    if (translateTxt) {
-        // send translate to main process via IPC
-        ipcRenderer.send('translate-txt', translateTxt);
-    }
+    let translateTxt = $('#translate-btn').val();
 })
 
 // Listen for new item from main process
 ipcRenderer.on('translate-success', (e, item) => {
-    if (item) {
-        window.openTranslate (item);
-    }
+    // if (item) {
+    //     window.openTranslate (item);
+    // }
+    console.log(item);
 });
 
 
