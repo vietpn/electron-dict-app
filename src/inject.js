@@ -1,7 +1,11 @@
-
-
-let translate = () => {
-    return document.getElementById("result_box").textContent;
+window.onload = () => {
+    const $ = require('jquery.js');
+    console.log($('#result_box'));
 }
 
-translate();
+// let translate = () => {
+//     return document.getElementById("result_box").textContent;
+// }
+
+// console.log(translate());
+
