@@ -1,36 +1,25 @@
 // Modules to control application life and create native browser window
 const { app, ipcMain } = require('electron');
-const mainWin = require('./mainWin');
-const translateWin = require('./translateWin');
+const mainWindow = require('./src/mainWindow');
+const translateWindow = require('./src/translateWindow');
 const fs = require('fs');
 
 
 // Enable Electron-reload
 require('electron-reload')(__dirname);
 
-ipcMain.on('translate-btn', (e, translateTxt) => {
-
-  // read file here
-  // let data = fs.readFileSync('words.txt', 'utf8');
-  // let words = JSON.parse(data);
-
-  // txt = words.join(',');
-
-  // console.log(txt);
-
-  // Get word translat
-  translateWin.createWindow(translateTxt);
+ipcMain.on('translate-btn', (e) => {
+  translateWindow.createWindow('test');
 })
 
 ipcMain.on('translate-word', (e, translateTxt) => {
   console.log('test');
-  
 })
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', mainWin.createWindow)
+app.on('ready', mainWindow.createWindow)
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
@@ -44,8 +33,8 @@ app.on('window-all-closed', () => {
 app.on('activate', () => {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
-  if (mainWin === null) {
-    mainWin.createWindow();
+  if (mainWindow === null) {
+    mainWindow.createWindow();
   }
 })
 

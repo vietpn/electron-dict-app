@@ -12,7 +12,7 @@ window.openTranslate = (item) => {
 }
 
 $('#translate-btn').click((e) => {
-    let translateTxt = $('#translate-btn').val();
+    ipcRenderer.send('translate-btn');
 })
 
 // Listen for new item from main process

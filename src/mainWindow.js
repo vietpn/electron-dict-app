@@ -15,7 +15,7 @@ exports.createWindow = () => {
     this.win.webContents.openDevTools()
 
     // load main window content
-    this.win.loadFile('./renderer/main.html')
+    this.win.loadFile('./front/mainRenderer.html')
 
     // Handle window closed
     this.win.on('closed', () => {

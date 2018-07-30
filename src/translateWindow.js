@@ -7,7 +7,7 @@ const path = require('path');
 let bgItemWin
 
 // New read item method
-exports.createWindow = (translateTxt, callback) => {
+exports.createWindow = (translateTxt) => {
 
     // Create new offscreen BrowserWindow
     bgItemWin = new BrowserWindow({
@@ -21,8 +21,6 @@ exports.createWindow = (translateTxt, callback) => {
 
     // URL translate of google
     let url = `https://translate.google.com/?sl=en&tl=vi&text=${translateTxt}`;
-
-    console.log(url);
 
     // load read item
     bgItemWin.loadURL(url);
